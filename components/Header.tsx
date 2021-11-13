@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import { getTotalIconCount } from '../lib/icons';
 
 export const Header: FunctionComponent = () => {
   return (
@@ -71,7 +72,9 @@ export const Header: FunctionComponent = () => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <p className="text-sm font-semibold text-gray-600">230 icons</p>
+                <p className="text-sm font-semibold text-gray-600">
+                  {getTotalIconCount()} icons
+                </p>
               </div>
               <div className="flex justify-center p-3 space-x-1 bg-purple-100 rounded-xl">
                 <svg

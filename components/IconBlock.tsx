@@ -22,7 +22,7 @@ export const IconBlock: FunctionComponent<IconBlockProps> = ({ name, svg }) => {
 
   return (
     <div className="flex relative flex-col p-5 w-full rounded-xl border group">
-      <div className="grid place-items-center h-20 text-gray-500">
+      <div className="grid place-items-center h-20 text-gray-500 fill-current">
         {parse(formatSvgAttributesForReact(svg))}
       </div>
       <div className="mt-3 w-full text-center">

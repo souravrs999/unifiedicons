@@ -1,7 +1,11 @@
-import heroIcons from '../utils/HeroIcons.json';
-import fontAwesomeIcons from '../utils/FontAwesomeIcons.json';
+import icons from '../utils/icons.json';
+
+const allIcons = icons;
 
 export const getAllIcons = () => {
-  const allIcons = [...heroIcons, ...fontAwesomeIcons];
   return allIcons;
+};
+
+export const getTotalIconCount = () => {
+  return Object.keys(allIcons).length;
 };
