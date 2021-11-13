@@ -69,7 +69,7 @@ export default async function handler(
           .limit(parseInt(pagination))
           .toArray();
 
-        return res.status(200).json({ success: true, icons });
+        return res.status(200).json(icons);
 
       default:
         return res
