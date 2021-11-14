@@ -29,6 +29,22 @@ interface IconType {
   updatedAt: string;
 }
 
+export async function getIconsFromDb(
+  client: any,
+  pageNumber: number,
+  pagination: number
+) {
+  const icons: IconType = await client
+    .db()
+    .collection('icons')
+    .find()
+    .sort({ _id: 1 })
+    .skip((pageNumber - 1) * pagination)
+    .limit(pagination)
+    .toArray();
+  return icons;
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -60,14 +76,11 @@ export default async function handler(
         return res.status(200).json({ success: true, ...providers });
 
       case 'icons':
-        const icons: IconType = await client
-          .db()
-          .collection('icons')
-          .find()
-          .sort({ id: 1 })
-          .skip((parseInt(pageNumber) - 1) * parseInt(pagination))
-          .limit(parseInt(pagination))
-          .toArray();
+        const icons = await getIconsFromDb(
+          client,
+          parseInt(pageNumber),
+          parseInt(pagination)
+        );
 
         return res.status(200).json(icons);
 
